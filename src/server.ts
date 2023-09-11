@@ -2,7 +2,16 @@ import fastify from 'fastify';
 import {FastifyInstance} from 'fastify'
 import Processes from './processes/processes';
 
+const cors = require("@fastify/cors")
+
+const corsOptions = {
+  credentials: true,
+  origin: "http://localhost:8080"
+}
+
 const app: FastifyInstance = fastify();
+
+app.register(cors, corsOptions)
 
 Processes(app)
 const port = 8080

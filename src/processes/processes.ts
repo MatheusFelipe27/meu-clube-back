@@ -66,7 +66,7 @@ export default function Processes(fastify: FastifyInstance){
     });
     
     // Rota DELETE para excluir um processo por ID
-    fastify.delete<{ Params: { id: string } }>('/processos/:id', async (req, res) => {
+    fastify.delete<{ Params: { id: Number } }>('/processos/:id', async (req, res) => {
         try {
             const id = Number(req.params.id);
     
