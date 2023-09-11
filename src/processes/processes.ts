@@ -53,10 +53,13 @@ export default function Processes(fastify: FastifyInstance){
                 res.status(400).send({ error: 'Campos inválidos ou ID não encontrado.' });
                 return;
             }
+
+            const existingDetails = allProcesses[id].details;
+
             allProcesses[id] = {
                 type,
                 name,
-                details: [],
+                details: existingDetails? [...existingDetails] : [],
             };
     
             res.status(200).send(allProcesses[id]);
